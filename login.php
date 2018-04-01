@@ -8,7 +8,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>MeetJahit - Home</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="form.css" >
+
+    <title>MeetJahit - Store</title>
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,56 +42,48 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
-            <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="index.php">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="order.html">Order</a>
+              <a class="nav-link text-uppercase text-expanded" href="order.php">Order</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="about.html">About</a>
+              <a class="nav-link text-uppercase text-expanded" href="about.php">About</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="stakeholder.html">Stakeholder</a>
+              <a class="nav-link text-uppercase text-expanded" href="stakeholder.php">Stakeholder</a>
+            </li>
+            <li class="nav-item active px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" href="login.php">Login</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <section class="page-section clearfix">
-      <div class="container">
-        <div class="intro">
-          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="img/tailor.png" alt="">
-          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper">Get your own fashion style</span>
-              <span class="section-heading-lower">Worth to Try</span>
-            </h2>
-            <p class="mb-3">Every cup of our quality artisan coffee starts with locally sourced, hand picked ingredients. Once you try it, our coffee will be a blissful addition to your everyday morning routine - we guarantee it!
-            </p>
-            <div class="intro-button mx-auto">
-              <a class="btn btn-primary btn-xl" href="order.html">Visit Us Today!</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <section class="page-section cta">
       <div class="container">
-        <div class="row">
-          <div class="col-xl-9 mx-auto">
-            <div class="cta-inner text-center rounded">
-              <h2 class="section-heading mb-4">
-                <span class="section-heading-upper">Our Promise</span>
-                <span class="section-heading-lower">To You</span>
-              </h2>
-              <p class="mb-0">When you walk into our shop to start your day, we are dedicated to providing you with friendly service, a welcoming atmosphere, and above all else, excellent products made with the highest quality ingredients. If you are not satisfied, please let us know and we will do whatever we can to make things right!</p>
-            </div>
-          </div>
+        <div class="col-xl-9 col-lg-10 mx-auto">
+          <div class="bg-faded p-5 rounded">
+          <h2>MEETJAHIT LOGIN</h2>
+          <p>Type your username and password:</p>
+            <form>
+              <div class="form-group">
+                <label for="usr">Username or Email</label>
+                <input type="text" class="form-control" id="usr">
+              </div>
+              <div class="form-group">
+                <label for="pwd">Password</label>
+                <input type="password" class="form-control" id="pwd">
+              </div>
+              <div class="submit">
+                <button type="submit" class="button-blue">LOGIN</button>
+              </div>
+            </form>
+        </div>
         </div>
       </div>
     </section>
@@ -97,10 +93,6 @@
         <p class="m-0 small">Copyright &copy; MeetJahit 2018</p>
       </div>
     </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   </body>
 
