@@ -56,7 +56,7 @@
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="stakeholder.php">Stakeholder</a>
             </li>
-            <li class="nav-item active px-lg-4">
+            <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="login.php">Login</a>
             </li>
           </ul>
@@ -68,21 +68,40 @@
       <div class="container">
         <div class="col-xl-9 col-lg-10 mx-auto">
           <div class="bg-faded p-5 rounded">
-          <h2>MEETJAHIT LOGIN</h2>
-          <p>Type your username and password:</p>
+          <h2>MEETJAHIT SIGN UP</h2>
+          <p>Fill this form to get a new MeetJahit account:</p>
             <form>
               <div class="form-group">
-                <label for="usr">Username or Email</label>
+                <label for="fname">Full Name</label>
+                <input type="text" class="form-control" id="fname">
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" id="email">
+              </div>
+              <div class="form-group">
+                <label for="usr">Username</label>
                 <input type="text" class="form-control" id="usr">
               </div>
               <div class="form-group">
                 <label for="pwd">Password</label>
                 <input type="password" class="form-control" id="pwd">
               </div>
-              <p>Don't have MeetJahit account? <a href="signup.php"> click here </a> </p>
-
+              <div class="form-group">
+                <label for="repwd">Re-type Your Password</label>
+                <input type="password" class="form-control" id="repwd">
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Select Your Account For</label>
+                <select class="form-control" id="prof">
+                  <option>Fashion Designer</option>
+                  <option>Textile Supplier</option>
+                  <option>Tailor</option>
+                  <option>Customer</option>
+                </select>
+              </div>
               <div class="submit">
-                <button type="submit" class="button-blue">LOGIN</button>
+                <button type="submit" class="button-blue">SIGN UP</button>
               </div>
             </form>
         </div>

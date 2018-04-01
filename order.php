@@ -74,12 +74,52 @@
                 </h2>
                 <form>
                 <div class="form-group">
-                  <label for="chest">Chest Length</label>
-                  <input type="text" class="form-control" id="chest">
+                  <label for="lebarleher">Lebar Leher</label>
+                  <input type="text" class="form-control" id="lebarleher">
                 </div>
                 <div class="form-group">
-                  <label for="neck">Neck Length</label>
-                  <input type="password" class="form-control" id="next">
+                  <label for="lebarbahu">Lebar Bahu</label>
+                  <input type="text" class="form-control" id="lebarbahu">
+                </div>
+                <div class="form-group">
+                  <label for="lebarkerunglengan">Lebar Kerung Lengan</label>
+                  <input type="text" class="form-control" id="lebarkerunglengan">
+                </div>
+                <div class="form-group">
+                  <label for="lebarlengan">Lebar Lengan</label>
+                  <input type="text" class="form-control" id="lebarlengan">
+                </div>
+                <div class="form-group">
+                  <label for="lebartangan">Lebar Tangan</label>
+                  <input type="text" class="form-control" id="lebartangan">
+                </div>
+                <div class="form-group">
+                  <label for="panjangtangan">Panjang Tangan</label>
+                  <input type="text" class="form-control" id="panjangtangan">
+                </div>
+                <div class="form-group">
+                  <label for="panjangbadan">Panjang Badan</label>
+                  <input type="text" class="form-control" id="panjangbadan">
+                </div>
+                <div class="form-group">
+                  <label for="lebardada">Lebar Dada</label>
+                  <input type="text" class="form-control" id="lebardada">
+                </div>
+                <div class="form-group">
+                  <label for="lebarpinggang">Lebar Pinggang</label>
+                  <input type="text" class="form-control" id="lebarpinggang">
+                </div>
+                <div class="form-group">
+                  <label for="lebarpinggul">Lebar Pinggul</label>
+                  <input type="text" class="form-control" id="lebarpinggul">
+                </div>
+                <div class="form-group">
+                  <label for="lingkar">Lingkar Rok / Celana</label>
+                  <input type="text" class="form-control" id="lingkar">
+                </div>
+                <div class="form-group">
+                  <label for="panjangbaju">Panjang Baju</label>
+                  <input type="text" class="form-control" id="panjangbaju">
                 </div>
                 <div class="form-group">
                   <label for="addr">Address</label>
