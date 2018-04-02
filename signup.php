@@ -122,6 +122,10 @@
                 <label for="kodepos">Post Code</label>
                 <input type="text" class="form-control" id="kodepos">
               </div>
+                <div class="form-group">
+                  <label for="addr">Address</label>
+                  <textarea class="form-control" id="addr"> </textarea>
+                </div>
               <div class="form-group">
                 <label for="prof">Select Your Account For</label>
                 <select class="form-control" id="prof">
