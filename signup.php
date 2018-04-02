@@ -70,7 +70,7 @@
           <div class="bg-faded p-5 rounded">
           <h2>MEETJAHIT SIGN UP</h2>
           <p>Fill this form to get a new MeetJahit account:</p>
-            <form action="signup.php#form?a=1" method="post">
+            <form action="signup.php#form" method="post">
               <div class="form-group">
                 <label for="fname">Full Name</label>
                 <input name="name" type="text" class="form-control" id="fname" required>
@@ -142,8 +142,10 @@
 	
 	<?php
 		include 'connect.php';
-		if(isset($_GET['a'])){
-		//if(isset($_POST['name'])&&isset($_POST['gender'])&&isset($_POST['email'])&&isset($_POST['username'])&&isset($_POST['pass'])&&isset($_POST['repass'])&&isset($_POST['ttl'])&&isset($_POST['addr'])&&isset($_POST['kec'])&&isset($_POST['kab'])&&isset($_POST['prov'])&&isset($_POST['pos'])&&isset($_POST['prof'])){
+		//$hex= dechex(45);
+		//echo "$hex";
+		//if(isset($_GET['a'])){
+		if(isset($_POST['name'])&&isset($_POST['gender'])&&isset($_POST['email'])&&isset($_POST['username'])&&isset($_POST['pass'])&&isset($_POST['repass'])&&isset($_POST['ttl'])&&isset($_POST['addr'])&&isset($_POST['kec'])&&isset($_POST['kab'])&&isset($_POST['prov'])&&isset($_POST['pos'])&&isset($_POST['prof'])){
 			
 			$name=htmlentities(strip_tags(trim($_POST['name'])));
 			$gender=$_POST['gender'];
@@ -160,12 +162,65 @@
 			$prof=$_POST['prof'];
 			
 			if($pass==$repass){
-				header("location:index.php");
-				/*$quer=
-				"INSERT INTO `tb_user` (`username`, `email`, `password`, `nama`, `ttl`, `alamat`, `jeniskelamin`, `kecamatan`, `kabupaten`, `provinsi`, `kodepos`, `profesi`) 
+				$quer="INSERT INTO `tb_user` (`username`, `email`, `password`, `nama`, `ttl`, `alamat`, `jeniskelamin`, `kecamatan`, `kabupaten`, `provinsi`, `kodepos`, `profesi`) 
 				VALUES ('$uname', '$email', '$pass', '$name', '$ttl', '$addr', '$gender', '$kec', '$kab', '$prov', '$pos', '$prof');";
-				$proses=mysqli_query($con,$quer);*/
+				$proses=mysqli_query($con,$quer);
+				
+				if($proses){
+					$cek="SELECT * from tb_user where username='$uname' and email='$email'";
+					$procek=mysqli_query($con,$cek);
+					while ($data= mysqli_fetch_array ($procek)){
+							$prof=$data['profesi'];
+							$idu=$data['idu'];
+					}
+					
+					if($prof==1){
+						$create="CREATE TABLE order_jahit_".$idu." (
+						  `kdbooking` varchar(20) NOT NULL,
+						  `idpelanggan` int(11),
+						  `alamat` varchar(150),
+						  `leher` smallint(6),
+						  `bahu` smallint(6),
+						  `kerung` smallint(6),
+						  `lengan` smallint(6),
+						  `ltangan` smallint(6),
+						  `ptangan` smallint(6),
+						  `pbadan` smallint(6),
+						  `dada` smallint(6),
+						  `pinggang` smallint(6),
+						  `pinggul` smallint(6),
+						  `lingkar` smallint(6),
+						  `pbaju` smallint(6),
+						  `bayar` tinyint(1),
+						  `progress` tinyint(1),
+						  `kirim` tinyint(1),
+						  `harga` int(11),
+						  `rating` tinyint(5),
+						  `tglorder` date,
+						  `tglkirim` date,
+						  `jumlah` smallint(6),
+						  `kain` smallint(6),
+						  `desain` varchar(100)
+						)";
+						$proses2=mysqli_query($con,$create);
+						
+						if($proses2){
+							$tb2="CREATE TABLE tb_penjahit".$idu." (
+							  `idp` int(11) NOT NULL,
+							  `gender` tinyint(2),
+							  `kategori` tinyint(4),
+							  `tarif` int(11)
+							)";
+							$proses3=mysqli_query($con,$tb2);
+							
+							if($proses3){
+								header("location:homecustomer.php#");
+							}
+						}
+					}
+				}
 			}
+				
 			else{	
 				echo "
 					<div class='alert alert-danger'>
