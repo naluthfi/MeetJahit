@@ -92,7 +92,7 @@
           <div class="bg-faded p-5 rounded">
           <h2>MEETJAHIT LOGIN</h2>
           <p>Type your username and password:</p>
-            <form>
+            <form action="" method="post">
               <div class="form-group">
                 <label for="usr">Username or Email</label>
                 <input name="username" type="text" class="form-control" id="usr">
