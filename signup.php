@@ -64,75 +64,71 @@
       </div>
     </nav>
 
-    <section class="page-section cta">
+    <section id="form" class="page-section cta">
       <div class="container">
         <div class="col-xl-9 col-lg-10 mx-auto">
           <div class="bg-faded p-5 rounded">
           <h2>MEETJAHIT SIGN UP</h2>
           <p>Fill this form to get a new MeetJahit account:</p>
-            <form>
+            <form action="signup.php#form?a=1" method="post">
               <div class="form-group">
                 <label for="fname">Full Name</label>
-                <input type="text" class="form-control" id="fname">
+                <input name="name" type="text" class="form-control" id="fname" required>
               </div>
               <div class="form-group">
                 <label for="gender">Select Your Gender</label>
-                <select class="form-control" id="gender">
-                  <option>Male</option>
-                  <option>Female</option>
+                <select name="gender" class="form-control" id="gender">
+                  <option value="1">Male</option>
+                  <option value="0">Female</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="email">Email</label>
-                <input type="text" class="form-control" id="email">
+                <input name="email" type="text" class="form-control" id="email" required>
               </div>
               <div class="form-group">
                 <label for="usr">Username</label>
-                <input type="text" class="form-control" id="usr">
+                <input name="username" type="text" class="form-control" id="usr" required>
               </div>
               <div class="form-group">
                 <label for="pwd">Password</label>
-                <input type="password" class="form-control" id="pwd">
+                <input name="pass" type="password" class="form-control" id="pwd" required>
               </div>
               <div class="form-group">
                 <label for="repwd">Re-type Your Password</label>
-                <input type="password" class="form-control" id="repwd">
+                <input name="repass" type="password" class="form-control" id="repwd" required>
               </div>
               <div class="form-group">
                 <label for="ttl">Birth Date</label>
-                <input type="date" class="form-control" id="ttl">
+                <input name="ttl" type="date" class="form-control" id="ttl" required>
               </div>
                 <div class="form-group">
                   <label for="addr">Address</label>
-                  <textarea class="form-control" id="addr"> </textarea>
+                  <textarea name="addr" class="form-control" id="addr"> </textarea>
                 </div>
               <div class="form-group">
                 <label for="kec">Sub-District</label>
-                <input type="text" class="form-control" id="kec">
+                <input name="kec" type="text" class="form-control" id="kec" required>
               </div>
               <div class="form-group">
                 <label for="kab">City</label>
-                <input type="text" class="form-control" id="kab">
+                <input name="kab" type="text" class="form-control" id="kab" required>
               </div>
               <div class="form-group">
                 <label for="prov">Province</label>
-                <input type="text" class="form-control" id="prov">
+                <input name="prov" type="text" class="form-control" id="prov" required>
               </div>
               <div class="form-group">
                 <label for="kodepos">Post Code</label>
-                <input type="text" class="form-control" id="kodepos">
+                <input name="pos" type="text" class="form-control" id="kodepos" required>
               </div>
-                <div class="form-group">
-                  <label for="addr">Address</label>
-                  <textarea class="form-control" id="addr"> </textarea>
-                </div>
               <div class="form-group">
                 <label for="prof">Select Your Account For</label>
-                <select class="form-control" id="prof">
-                  <option>Fashion Designer</option>
-                  <option>Textile Supplier</option>
-                  <option>Tailor</option>
-                  <option>Customer</option>
+                <select name="prof" class="form-control" id="prof">
+                  <option value="1">Fashion Designer</option>
+                  <option value="2">Textile Supplier</option>
+                  <option value="3">Tailor</option>
+                  <option value="4">Customer</option>
                 </select>
               </div>
               <div class="submit">
@@ -143,6 +139,42 @@
         </div>
       </div>
     </section>
+	
+	<?php
+		include 'connect.php';
+		if(isset($_GET['a'])){
+		//if(isset($_POST['name'])&&isset($_POST['gender'])&&isset($_POST['email'])&&isset($_POST['username'])&&isset($_POST['pass'])&&isset($_POST['repass'])&&isset($_POST['ttl'])&&isset($_POST['addr'])&&isset($_POST['kec'])&&isset($_POST['kab'])&&isset($_POST['prov'])&&isset($_POST['pos'])&&isset($_POST['prof'])){
+			
+			$name=htmlentities(strip_tags(trim($_POST['name'])));
+			$gender=$_POST['gender'];
+			$email=$_POST['email'];
+			$uname=$_POST['username'];
+			$pass=$_POST['pass'];
+			$repass=$_POST['repass'];
+			$ttl=$_POST['ttl'];
+			$addr=$_POST['addr'];
+			$kec=$_POST['kec'];
+			$kab=$_POST['kab'];
+			$prov=$_POST['prov'];
+			$pos=$_POST['pos'];
+			$prof=$_POST['prof'];
+			
+			if($pass==$repass){
+				header("location:index.php");
+				/*$quer=
+				"INSERT INTO `tb_user` (`username`, `email`, `password`, `nama`, `ttl`, `alamat`, `jeniskelamin`, `kecamatan`, `kabupaten`, `provinsi`, `kodepos`, `profesi`) 
+				VALUES ('$uname', '$email', '$pass', '$name', '$ttl', '$addr', '$gender', '$kec', '$kab', '$prov', '$pos', '$prof');";
+				$proses=mysqli_query($con,$quer);*/
+			}
+			else{	
+				echo "
+					<div class='alert alert-danger'>
+						<strong>Password tidak cocok!</strong> Username atau password salah
+					</div>";
+				//header("location:login.php#form");
+			}
+		}						
+	?>
 
     <footer class="footer text-faded text-center py-5">
       <div class="container">
