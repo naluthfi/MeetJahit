@@ -101,22 +101,33 @@
 							echo "
 							<div class='alert alert-danger'>
 							<strong>Login Gagal!</strong> Username atau password salah
-							</div>";s
+							</div>";
 							//header("location:login.php#form");
-						}
-						else{
-							while($data=mysqli_fetch_array($proses)){
-								$prof=['profesi'];
-							}
-							setcookie(id,$idu);
-							
-							if($prof==4){
-								header("location:homecustomer.php");
-							}
-							else header("location:index.php");
-							
-						}	
 					}
+					else{
+						setcookie(id,$idu);
+						while ($data= mysqli_fetch_array ($proses)){
+							$prof=$data['profesi'];
+						
+						
+							
+						if($prof==1){
+							header("location:hometailor.php#");
+						}	
+						if($prof==2){
+							header("location:homedesigner.php#");
+						}	
+						if($prof==3){
+							header("location:homesupplier.php#");
+						}	
+						if($prof==4){
+							header("location:homecustomer.php#");
+						}
+						else header("location:index.php#");
+						}
+					}
+				}					
+				
 			?>
 	
             </form>
