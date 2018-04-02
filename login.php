@@ -27,28 +27,8 @@
   </head>
 
   <body>
-		
-	 <?php
-		include 'connect.php';
-		if(isset($_POST['username'])&&isset($_POST['pass'])){
-			$idu=$_POST['username'];
-			$pas=$_POST['pass'];
-			
-			$quer="SELECT * FROM tb_user WHERE (username='".$idu."' OR email='".$idu."') and password='".$pas."' ";
-			$proses=mysqli_query($con,$quer);
-			$row=mysqli_num_rows($proses);
-			if($row==0){
-				echo "
-				<script> 
-					Materialize.toast('username atau password yang Anda masukkan salah', 5000)
-				</script>";
-			}
-			else{
-				setcookie(id,$idu);
-				header("location:index.php");
-			}	
-		}
-	  ?>
+
+	
 	
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">An Online Marketplace for Fashion Designers, Textile Suppliers, and Tailors in Indonesia</span>
@@ -86,13 +66,14 @@
       </div>
     </nav>
 
-    <section class="page-section cta">
-      <div class="container">
+    <section id="form" class="page-section cta">
+      <div  class="container">
         <div class="col-xl-9 col-lg-10 mx-auto">
+		
           <div class="bg-faded p-5 rounded">
           <h2>MEETJAHIT LOGIN</h2>
           <p>Type your username and password:</p>
-            <form action="" method="post">
+            <form  action="login.php#form" method="post">
               <div class="form-group">
                 <label for="usr">Username or Email</label>
                 <input name="username" type="text" class="form-control" id="usr">
@@ -106,6 +87,30 @@
               <div class="submit">
                 <button type="submit" class="button-blue">LOGIN</button>
               </div>
+				<?php
+				include 'connect.php';
+		if(isset($_POST['username'])&&isset($_POST['pass'])){
+			$idu=$_POST['username'];
+			$pas=$_POST['pass'];
+			
+			$quer="SELECT * FROM tb_user WHERE (username='".$idu."' OR email='".$idu."') and password='".$pas."' ";
+			$proses=mysqli_query($con,$quer);
+			$row=mysqli_num_rows($proses);
+			if($row==0){
+				
+					echo "
+					<div class='alert alert-danger'>
+					<strong>Login Gagal!</strong> Username atau password salah
+					</div>";
+					//header("location:login.php#form");
+				}
+				else{
+					setcookie(id,$idu);
+					header("location:index.php");
+				}	
+			}
+	?>
+	
             </form>
         </div>
         </div>
