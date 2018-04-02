@@ -76,6 +76,13 @@
                 <input type="text" class="form-control" id="fname">
               </div>
               <div class="form-group">
+                <label for="gender">Select Your Gender</label>
+                <select class="form-control" id="gender">
+                  <option>Male</option>
+                  <option>Female</option>
+                </select>
+              </div>
+              <div class="form-group">
                 <label for="email">Email</label>
                 <input type="text" class="form-control" id="email">
               </div>
@@ -92,7 +99,31 @@
                 <input type="password" class="form-control" id="repwd">
               </div>
               <div class="form-group">
-                <label for="exampleFormControlSelect1">Select Your Account For</label>
+                <label for="ttl">Birth Date</label>
+                <input type="date" class="form-control" id="ttl">
+              </div>
+                <div class="form-group">
+                  <label for="addr">Address</label>
+                  <textarea class="form-control" id="addr"> </textarea>
+                </div>
+              <div class="form-group">
+                <label for="kec">Sub-District</label>
+                <input type="text" class="form-control" id="kec">
+              </div>
+              <div class="form-group">
+                <label for="kab">City</label>
+                <input type="text" class="form-control" id="kab">
+              </div>
+              <div class="form-group">
+                <label for="prov">Province</label>
+                <input type="text" class="form-control" id="prov">
+              </div>
+              <div class="form-group">
+                <label for="kodepos">Post Code</label>
+                <input type="text" class="form-control" id="kodepos">
+              </div>
+              <div class="form-group">
+                <label for="prof">Select Your Account For</label>
                 <select class="form-control" id="prof">
                   <option>Fashion Designer</option>
                   <option>Textile Supplier</option>
