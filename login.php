@@ -88,14 +88,13 @@
 				<?php
 				include 'connect.php';
 				if(isset($_POST['username'])&&isset($_POST['pass'])){
-					$idu=$_POST['username'];
+					$uname=$_POST['username'];
 					$pas=$_POST['pass'];
 					
-					$quer="SELECT * FROM tb_user WHERE (username='".$idu."' OR email='".$idu."') and password='".$pas."' ";
+					$quer="SELECT * FROM tb_user WHERE (username='".$uname."' OR email='".$uname."') and password='".$pas."' ";
 					$proses=mysqli_query($con,$quer);
 					$row=mysqli_num_rows($proses);
 					if($row==0){
-						
 							echo "
 							<div class='alert alert-danger'>
 							<strong>Login Gagal!</strong> Username atau password salah
@@ -103,9 +102,9 @@
 							//header("location:login.php#form");
 					}
 					else{
-						setcookie(id,$idu);
 						while ($data= mysqli_fetch_array ($proses)){
 							$prof=$data['profesi'];
+							$idu=$data['idu'];
 							
 							if($prof==1){
 								header("location:hometailor.php#");
@@ -121,6 +120,8 @@
 							}
 							else header("location:index.php#");
 						}
+						
+						setcookie(id,$idu);
 					}
 				}					
 			?>
