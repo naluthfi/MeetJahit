@@ -89,27 +89,35 @@
               </div>
 				<?php
 				include 'connect.php';
-		if(isset($_POST['username'])&&isset($_POST['pass'])){
-			$idu=$_POST['username'];
-			$pas=$_POST['pass'];
-			
-			$quer="SELECT * FROM tb_user WHERE (username='".$idu."' OR email='".$idu."') and password='".$pas."' ";
-			$proses=mysqli_query($con,$quer);
-			$row=mysqli_num_rows($proses);
-			if($row==0){
-				
-					echo "
-					<div class='alert alert-danger'>
-					<strong>Login Gagal!</strong> Username atau password salah
-					</div>";
-					//header("location:login.php#form");
-				}
-				else{
-					setcookie(id,$idu);
-					header("location:index.php");
-				}	
-			}
-	?>
+				if(isset($_POST['username'])&&isset($_POST['pass'])){
+					$idu=$_POST['username'];
+					$pas=$_POST['pass'];
+					
+					$quer="SELECT * FROM tb_user WHERE (username='".$idu."' OR email='".$idu."') and password='".$pas."' ";
+					$proses=mysqli_query($con,$quer);
+					$row=mysqli_num_rows($proses);
+					if($row==0){
+						
+							echo "
+							<div class='alert alert-danger'>
+							<strong>Login Gagal!</strong> Username atau password salah
+							</div>";s
+							//header("location:login.php#form");
+						}
+						else{
+							while($data=mysqli_fetch_array($proses)){
+								$prof=['profesi'];
+							}
+							setcookie(id,$idu);
+							
+							if($prof==4){
+								header("location:homecustomer.php");
+							}
+							else header("location:index.php");
+							
+						}	
+					}
+			?>
 	
             </form>
         </div>
