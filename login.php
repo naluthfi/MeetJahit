@@ -27,7 +27,29 @@
   </head>
 
   <body>
-
+		
+	 <?php
+		include 'connect.php';
+		if(isset($_POST['username'])&&isset($_POST['pass'])){
+			$idu=$_POST['username'];
+			$pas=$_POST['pass'];
+			
+			$quer="SELECT * FROM tb_user WHERE (username='".$idu."' OR email='".$idu."') and password='".$pas."' ";
+			$proses=mysqli_query($con,$quer);
+			$row=mysqli_num_rows($proses);
+			if($row==0){
+				echo "
+				<script> 
+					Materialize.toast('username atau password yang Anda masukkan salah', 5000)
+				</script>";
+			}
+			else{
+				setcookie(id,$idu);
+				header("location:index.php");
+			}	
+		}
+	  ?>
+	
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">An Online Marketplace for Fashion Designers, Textile Suppliers, and Tailors in Indonesia</span>
       <span class="site-heading-lower">MeetJahit</span>
@@ -73,11 +95,11 @@
             <form>
               <div class="form-group">
                 <label for="usr">Username or Email</label>
-                <input type="text" class="form-control" id="usr">
+                <input name="username" type="text" class="form-control" id="usr">
               </div>
               <div class="form-group">
                 <label for="pwd">Password</label>
-                <input type="password" class="form-control" id="pwd">
+                <input name="pass" type="password" class="form-control" id="pwd">
               </div>
               <p>Don't have MeetJahit account? <a href="signup.php"> click here </a> </p>
 
