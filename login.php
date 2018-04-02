@@ -28,8 +28,6 @@
 
   <body>
 
-	
-	
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">An Online Marketplace for Fashion Designers, Textile Suppliers, and Tailors in Indonesia</span>
       <span class="site-heading-lower">MeetJahit</span>
@@ -82,7 +80,7 @@
                 <label for="pwd">Password</label>
                 <input name="pass" type="password" class="form-control" id="pwd">
               </div>
-              <p>Don't have MeetJahit account? <a href="signup.php"> click here </a> </p>
+              <p>Don't have MeetJahit account? <a href="signup.php#form"> click here </a> </p>
 
               <div class="submit">
                 <button type="submit" class="button-blue">LOGIN</button>
@@ -108,26 +106,23 @@
 						setcookie(id,$idu);
 						while ($data= mysqli_fetch_array ($proses)){
 							$prof=$data['profesi'];
-						
-						
 							
-						if($prof==1){
-							header("location:hometailor.php#");
-						}	
-						if($prof==2){
-							header("location:homedesigner.php#");
-						}	
-						if($prof==3){
-							header("location:homesupplier.php#");
-						}	
-						if($prof==4){
-							header("location:homecustomer.php#");
-						}
-						else header("location:index.php#");
+							if($prof==1){
+								header("location:hometailor.php#");
+							}	
+							if($prof==2){
+								header("location:homedesigner.php#");
+							}	
+							if($prof==3){
+								header("location:homesupplier.php#");
+							}	
+							if($prof==4){
+								header("location:homecustomer.php#");
+							}
+							else header("location:index.php#");
 						}
 					}
 				}					
-				
 			?>
 	
             </form>
