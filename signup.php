@@ -179,9 +179,8 @@
 							}
 						}
 					}
-					Kdbookin
 					
-					else if($prof==3){//for textile suppliers
+					else if ($prof==3){//for textile suppliers
 						$create="CREATE TABLE order_kain".$idu." (
 						  `kdbooking` varchar(20) NOT NULL,
 						  `idpelanggan` int(11),
