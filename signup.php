@@ -101,7 +101,7 @@
 							$idu=$data['idu'];
 					}
 					
-					if($prof==3){//for tailors
+					if($prof==1){//for tailors
 						$create="CREATE TABLE order_jahit_".$idu." (
 						  `kdbooking` varchar(20) NOT NULL,
 						  `idpelanggan` int(11),
@@ -142,6 +142,76 @@
 							
 							if($proses3){
 								header("location:hometailor.php#");
+							}
+						}
+					}
+					
+					else if($prof==2){//for designers
+						$create="CREATE TABLE order_desain".$idu." (
+						  `kdbooking` varchar(20) NOT NULL,
+						  `idpelanggan` int(11),
+						  `alamat` varchar(150),
+						  `email` varchar(30),
+						  `bayar` tinyint(1),
+						  `progress` tinyint(1),
+						  `kirim` tinyint(1),
+						  `harga` int(11),
+						  `rating` tinyint(5),
+						  `tglorder` date,
+						  `tglkirim` date,
+						  `jumlah` smallint(6),
+						  `kain` smallint(6),
+						  `desain` varchar(100)
+						)";
+						$proses2=mysqli_query($con,$create);
+						
+						if($proses2){
+							$tb2="CREATE TABLE tb_desainer".$idu." (
+							  `idp` int(11) NOT NULL,
+							  `gender` tinyint(2),
+							  `kategori` tinyint(4),
+							  `tarif` int(11)
+							)";
+							$proses3=mysqli_query($con,$tb2);
+							
+							if($proses3){
+								header("location:homedesigner.php#");
+							}
+						}
+					}
+					Kdbookin
+					
+					else if($prof==3){//for textile suppliers
+						$create="CREATE TABLE order_kain".$idu." (
+						  `kdbooking` varchar(20) NOT NULL,
+						  `idpelanggan` int(11),
+						  `alamat` varchar(150),
+						  `idk` varchar(30),
+						  `bayar` tinyint(1),
+						  `progress` tinyint(1),
+						  `kirim` tinyint(1),
+						  `harga` int(11),
+						  `rating` tinyint(5),
+						  `tglorder` date,
+						  `tglkirim` date,
+						  `jumlah` smallint(6),
+						  `kain` smallint(6),
+						  `desain` varchar(100)
+						)";
+						
+						$proses2=mysqli_query($con,$create);
+						
+						if($proses2){
+							$tb2="CREATE TABLE tb_supplier".$idu." (
+							  `kdkain` varchar(5) NOT NULL,
+							  `kdwarna` varchar((6),
+							  `stok` int(5),
+							  `harga` int(11)
+							)";
+							$proses3=mysqli_query($con,$tb2);
+							
+							if($proses3){
+								header("location:homedesigner.php#");
 							}
 						}
 					}
@@ -219,9 +289,9 @@
               <div class="form-group">
                 <label for="prof">Select Your Account For</label>
                 <select name="prof" class="form-control" id="prof">
-                  <option value="1">Fashion Designer</option>
-                  <option value="2">Textile Supplier</option>
-                  <option value="3">Tailor</option>
+                  <option value="2">Fashion Designer</option>
+                  <option value="3">Textile Supplier</option>
+                  <option value="1">Tailor</option>
                   <option value="4">Customer</option>
                 </select>
               </div>
