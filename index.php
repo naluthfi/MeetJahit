@@ -44,7 +44,7 @@
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="signup.php">Order</a>
+              <a class="nav-link text-uppercase text-expanded" href="order.php">Order</a>
             </li>
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="about.php">About</a>
@@ -75,7 +75,7 @@
               -Coco Chanel
             </p>
             <div class="intro-button mx-auto">
-              <a class="btn btn-primary btn-xl" href="order.html">Sign Up Now!</a>
+              <a class="btn btn-primary btn-xl" href="signup.php">Sign Up Now!</a>
             </div>
           </div>
         </div>
