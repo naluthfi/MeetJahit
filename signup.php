@@ -147,7 +147,7 @@
 					}
 					
 					else if($prof==2){//for designers
-						$create="CREATE TABLE order_desain".$idu." (
+						$create="CREATE TABLE order_desain_".$idu." (
 						  `kdbooking` varchar(20) NOT NULL,
 						  `idpelanggan` int(11),
 						  `alamat` varchar(150),
@@ -166,7 +166,7 @@
 						$proses2=mysqli_query($con,$create);
 						
 						if($proses2){
-							$tb2="CREATE TABLE tb_desainer".$idu." (
+							$tb2="CREATE TABLE tb_desainer_".$idu." (
 							  `idp` int(11) NOT NULL,
 							  `gender` tinyint(2),
 							  `kategori` tinyint(4),
@@ -181,7 +181,7 @@
 					}
 					
 					else if ($prof==3){//for textile suppliers
-						$create="CREATE TABLE order_kain".$idu." (
+						$create="CREATE TABLE order_kain_".$idu." (
 						  `kdbooking` varchar(20) NOT NULL,
 						  `idpelanggan` int(11),
 						  `alamat` varchar(150),
@@ -201,16 +201,16 @@
 						$proses2=mysqli_query($con,$create);
 						
 						if($proses2){
-							$tb2="CREATE TABLE tb_supplier".$idu." (
+							$tb2="CREATE TABLE tb_supplier_".$idu." (
 							  `kdkain` varchar(5) NOT NULL,
-							  `kdwarna` varchar((6),
+							  `kdwarna` varchar(6),
 							  `stok` int(5),
 							  `harga` int(11)
 							)";
 							$proses3=mysqli_query($con,$tb2);
 							
 							if($proses3){
-								header("location:homedesigner.php#");
+								header("location:homesupplier.php#");
 							}
 						}
 					}

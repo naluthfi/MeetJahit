@@ -118,7 +118,13 @@
 							if($prof==4){
 								header("location:homecustomer.php#");
 							}
-							else header("location:index.php#");
+							else 
+							{
+								echo "
+								<div class='alert alert-danger'>
+								<strong>Login Gagal!</strong> Username atau password salah
+								</div>";
+							}
 						}
 						
 						setcookie(id,$idu);
