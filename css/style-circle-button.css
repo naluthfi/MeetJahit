@@ -1,0 +1,101 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.circle-menu {
+  position: fixed;
+  top: 400px;
+  left: 5px;
+}
+
+.circle-menu__buttons-group {
+  display: none;
+}
+
+.circle-menu__button {
+  width: 80px;
+  height: 50px;
+  border: 2px solid #422419;
+  border-radius: 24px;
+  position: absolute;
+  cursor: pointer;
+  font-size: 14px;
+  background-color: #D9A056;
+  color: #FFFFFF;
+}
+.circle-menu__button:focus {
+  outline: unset;
+}
+
+.circle-menu__toggle-button {
+  width: 60px;
+  height: 60px;
+  border: none;
+  font-size: 15px;
+  background-color: #422419;
+  color: #ffffff;
+}
+
+.circle-menu__button--1:hover,
+.circle-menu__button--2:hover,
+.circle-menu__button--3:hover {
+  background-color: #88746E;
+  color: #000000;
+  border-color: #000000;
+}
+
+.circle-menu__button--1 {
+  left: 70px;
+	top: 5px;
+}
+
+.circle-menu__button--2 {
+  left: 40px;
+	top: 60px;
+}
+
+.circle-menu__button--3 {
+  left: 0px;
+  top: 100px;
+}
+
+.daftar-penjahit {	
+  background-color: hsla(12,19%,79%,0.72);
+	padding: 10px;
+	color: #000000;
+	margin-top: 15px;
+}
+
+.garis-bawah {
+  width: 280px;
+  height: 3px;
+  background-color: #000000;
+	margin-bottom: 20px;
+}
+
+.daftar-desainer {
+  background-color: hsla(12,19%,79%,0.72);
+	padding: 10px;
+	color: #000000;
+	
+}
+
+.profile-desainer {
+  width: 100px;
+  height: 100px;
+  margin-right: 25px;
+  margin-bottom: 60px;
+  text-align: center;
+	
+}
+
+.profile-penjahit {
+	width: 100px;
+  height: 100px;
+  margin-right: 25px;
+	margin-bottom: 60px;
+	text-align: center;
+}

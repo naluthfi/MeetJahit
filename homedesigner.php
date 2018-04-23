@@ -11,19 +11,20 @@
     <title>MeetJahit - Home</title>
 	<!-- Circle CSS -->
 	 
-	<link rel="stylesheet" href="../css/style-circle-button.css">
+	<link rel="stylesheet" href="css/style-circle-button.css">
 
     <!-- Bootstrap core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="../css/business-casual.min.css" rel="stylesheet">
+    <link href="css/business-casual.min.css" rel="stylesheet">
 
   </head>
+
 
   <body>
 
@@ -74,56 +75,56 @@
 					<tr>
 						<td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 							  	<br> 
 								<strong>Desainer 1</strong>
 							</div>
 						</td>
 						<td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 2</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 3</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 4</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 5</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 6</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 7</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 8</strong>
 							</div>
@@ -132,56 +133,56 @@
 					<tr>
 						<td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 							  	<br> 
 								<strong>Desainer 9</strong>
 							</div>
 						</td>
 						<td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 10</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 11</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 12</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 13</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 14</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 15</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-desainer">
-								<img src="../img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
+								<img src="img/desainer/ex-desainer.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Desainer 16</strong>
 							</div>
@@ -204,56 +205,56 @@
 					<tr>
 						<td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 							  	<br> 
 								<strong>Penjahit 1</strong>
 							</div>
 						</td>
 						<td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 2</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 3</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 4</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 5</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 6</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 7</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 8</strong>
 							</div>
@@ -262,56 +263,56 @@
 					<tr>
 						<td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 							  	<br> 
 								<strong>Penjahit 9</strong>
 							</div>
 						</td>
 						<td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 10</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 11</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 12</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 13</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 14</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 15</strong>
 							</div>
 						</td>
 					  <td>
 							<div class="profile-penjahit">
-								<img src="../img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
+								<img src="img/tailor/ex-tailor.jpg" width="120" height="120" alt=""/>
 								<br> 
 								<strong>Penjahit 16</strong>
 							</div>
@@ -331,7 +332,7 @@
 				</div>
 			</div>
 			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
-  		   	<script  src="../js/index-popup-button.js"></script>
+  		   	<script  src="js/index-popup-button.js"></script>
 			
 
         </div>
