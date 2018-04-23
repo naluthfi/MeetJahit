@@ -85,7 +85,7 @@
 										echo "
 										<td>
 										<div class='profile-penjahit'>
-											<img src='img/tailor/ex-tailor.jpg' width='120' height='120' alt=''/>
+											<img src='img/desainer/ex-desainer.jpg' width='120' height='120' alt=''/>
 											<br> 
 											<strong>$nama</strong>
 										</div>
