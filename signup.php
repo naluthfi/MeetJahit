@@ -215,7 +215,7 @@
 						}
 					}
 					
-					setcookie(id,$idu);
+					setcookie('id',$idu);
 				}
 			}
 				
