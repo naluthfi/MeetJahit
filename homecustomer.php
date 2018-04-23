@@ -9,6 +9,9 @@
     <meta name="author" content="">
 
     <title>MeetJahit - Home</title>
+	<!-- Circle CSS -->
+	 
+	<link rel="stylesheet" href="css/style-circle-button.css">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,6 +24,7 @@
     <link href="css/business-casual.min.css" rel="stylesheet">
 
   </head>
+
 
   <body>
 
@@ -52,7 +56,7 @@
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="stakeholder.php">Stakeholder</a>
             </li>
-          </ul>
+          </ul> 
         </div>
       </div>
     </nav>
@@ -60,21 +64,87 @@
     <section class="page-section clearfix">
       <div class="container">
         <div class="intro">
-          <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="img/tailor.png" alt="">
-          <div class="intro-text left-0 text-center bg-faded p-5 rounded">
-            <h2 class="section-heading mb-4">
-              <span class="section-heading-upper">Get your own fashion style</span>
-              <span class="section-heading-lower">Worth to Try</span>
-            </h2>
-            <p class="mb-3">“Fashion is not something that exists in dresses only. Fashion is in the sky, in the street, fashion has to do with ideas, the way we live, what is happening.”
-            </p>
-            <p>
-              -Coco Chanel
-            </p>
-            <div class="intro-button mx-auto">
-              <a class="btn btn-primary btn-xl" href="order.html">Sign Up Now!</a>
-            </div>
-          </div>
+			
+			
+			<div class="daftar-desainer" id="desainer">
+				<h2>Daftar Desainer</h2>
+				<div class="garis-bawah"></div>
+				<center>
+				<table>
+				  <tbody>
+					<tr>
+						<?php
+									include 'connect.php';
+									$idu=$_COOKIE['id'];
+									
+									$queri="SELECT * from tb_user WHERE profesi=2 order by idu";
+
+									$proses=mysqli_query($con,$queri);
+									while ($data = mysqli_fetch_array ($proses)){
+										$nama=$data['username'];		
+										echo "
+										<td>
+										<div class='profile-penjahit'>
+											<img src='img/tailor/ex-tailor.jpg' width='120' height='120' alt=''/>
+											<br> 
+											<strong>$nama</strong>
+										</div>
+									</td>
+										";
+									}
+					?>
+						
+					</tr>
+				  </tbody>
+				</table>	
+				</center>
+				
+				
+			  
+			</div>
+			
+			<div class="daftar-penjahit" id="penjahit">
+				<h2>Daftar Penjahit</h2>
+				<div class="garis-bawah"></div>
+				<center>
+				<table>
+				  <tbody>
+					<tr>
+					<?php						
+						$queri="SELECT * from tb_user WHERE profesi=1 order by idu";
+
+						$proses=mysqli_query($con,$queri);
+						while ($data = mysqli_fetch_array ($proses)){
+							$nama=$data['username'];		
+							echo "
+								<td>
+									<div class='profile-penjahit'>
+										<img src='img/tailor/ex-tailor.jpg' width='120' height='120' alt=''/>
+										<br> 
+										<strong>$nama</strong>
+									</div>
+								</td>
+							";
+						}
+					?>
+					</tr>
+				  </tbody>
+				</table>	
+				</center>
+			</div>
+			
+			
+			<div class="circle-menu">
+				<button class="circle-menu__button circle-menu__toggle-button" data-circle-menu-toggle="">Menu</button>
+				<div class="circle-menu__buttons-group" data-circle-menu-group="">
+					<button onClick="window.location.href='index.php#desainer';" class="circle-menu__button circle-menu__button--1">Desainer</button>
+					<button onClick="window.location.href='index.php#penjahit';" class="circle-menu__button circle-menu__button--2">Penjahit</button>
+				</div>
+			</div>
+			<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
+  		   	<script  src="js/index-popup-button.js"></script>
+			
+
         </div>
       </div>
     </section>
@@ -102,8 +172,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   </body>
 
