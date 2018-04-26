@@ -104,44 +104,33 @@
 					if($prof==1){//for tailors
 						$create="CREATE TABLE order_jahit_".$idu." (
 						  `kdbooking` varchar(20) NOT NULL,
-						  `idpelanggan` int(11),
-						  `alamat` varchar(150),
-						  `leher` smallint(6),
-						  `bahu` smallint(6),
-						  `kerung` smallint(6),
-						  `lengan` smallint(6),
-						  `ltangan` smallint(6),
-						  `ptangan` smallint(6),
-						  `pbadan` smallint(6),
-						  `dada` smallint(6),
-						  `pinggang` smallint(6),
-						  `pinggul` smallint(6),
-						  `lingkar` smallint(6),
-						  `pbaju` smallint(6),
-						  `bayar` tinyint(1),
-						  `progress` tinyint(1),
-						  `kirim` tinyint(1),
-						  `harga` int(11),
-						  `rating` tinyint(5),
-						  `tglorder` date,
-						  `tglkirim` date,
-						  `jumlah` smallint(6),
-						  `kain` smallint(6),
-						  `desain` varchar(100)
+						  `idpelanggan` int(11) DEFAULT NULL,
+						  `alamat` varchar(150) DEFAULT NULL,
+						  `ukuran` smallint(6) NOT NULL,
+						  `bayar` tinyint(1) DEFAULT NULL,
+						  `progress` tinyint(1) DEFAULT NULL,
+						  `kirim` tinyint(1) DEFAULT NULL,
+						  `harga` int(11) DEFAULT NULL,
+						  `rating` tinyint(5) DEFAULT NULL,
+						  `tglorder` date DEFAULT NULL,
+						  `tglkirim` date DEFAULT NULL,
+						  `jumlah` smallint(6) DEFAULT NULL,
+						  `kain` smallint(6) DEFAULT NULL,
+						  `desain` varchar(100) DEFAULT NULL
 						)";
+						
 						$proses2=mysqli_query($con,$create);
 						
 						if($proses2){
 							$tb2="CREATE TABLE tb_penjahit_".$idu." (
 							  `idp` int(11) NOT NULL,
-							  `gender` tinyint(2),
 							  `kategori` tinyint(4),
 							  `tarif` int(11)
 							)";
 							$proses3=mysqli_query($con,$tb2);
 							
 							if($proses3){
-								header("location:hometailor.php#");
+								header("location:cus.php");
 							}
 						}
 					}
@@ -168,7 +157,6 @@
 						if($proses2){
 							$tb2="CREATE TABLE tb_desainer_".$idu." (
 							  `idp` int(11) NOT NULL,
-							  `gender` tinyint(2),
 							  `kategori` tinyint(4),
 							  `tarif` int(11)
 							)";

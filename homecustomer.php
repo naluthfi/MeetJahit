@@ -84,10 +84,10 @@
 										$nama=$data['username'];		
 										echo "
 										<td>
-										<div class='profile-penjahit'>
+										<div class='profile-penjahit' style='background: #000;'>
 											<img src='img/desainer/ex-desainer.jpg' width='120' height='120' alt=''/>
 											<br> 
-											<strong>$nama</strong>
+											<strong><a href='order.php?id=".$data['idu']."'>$nama</a></strong>
 										</div>
 									</td>
 										";
@@ -121,7 +121,7 @@
 									<div class='profile-penjahit'>
 										<img src='img/tailor/ex-tailor.jpg' width='120' height='120' alt=''/>
 										<br> 
-										<strong>$nama</strong>
+										<strong><a href='order.php?id=".$data['idu']."'>$nama</a></strong>
 									</div>
 								</td>
 							";

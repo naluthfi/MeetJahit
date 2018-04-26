@@ -107,7 +107,7 @@
 							$idu=$data['idu'];
 							
 							if($prof==1){
-								header("location:hometailor.php#");
+								header("location:cus.php#");
 							}	
 							if($prof==2){
 								header("location:homedesigner.php#");
@@ -116,7 +116,7 @@
 								header("location:homesupplier.php#");
 							}	
 							if($prof==4){
-								header("location:homecustomer.php#");
+								header("location:cus.php#");
 							}
 							else 
 							{
