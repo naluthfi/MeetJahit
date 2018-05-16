@@ -23,6 +23,9 @@
 		include 'connect.php';
 		session_start();
 		$idu=$_COOKIE['id'];
+		if($idu==NULL){
+			header('location:login.php');
+		}
 		$kat = $_SESSION['kat'];
 		if(isset($_POST['kategori']) && isset($_GET['go'])){
 			$_SESSION['kat'] =  $_POST['kategori'];
@@ -78,8 +81,9 @@
 	<!--UI Web-->	
 
 			<div class="row col l12 m12 s12" style="background-color: #351e16; margin-right:80px; margin-left:80px;">
-				<div class="col l9 m12 s12" style="text-align:left; font-family: 'Raleway Dots', cursive; color:white; font-size:40px; padding:10px; padding-left:100px;">MEETJAHIT</div>
+				<div class="col l8 m12 s12" style="text-align:left; font-family: 'Raleway Dots', cursive; color:white; font-size:40px; padding:10px; padding-left:100px;">MEETJAHIT</div>
 				<a id="head" href="cus.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HOME</a>
+				<a id="head" href="history.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HISTORY</a>
 				<a id="head" href="profile.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">PROFILE</a>
 				<a id="head" href="index.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">X</a>
 			</div >
@@ -126,9 +130,10 @@
 				</div>					 
 			</form>
 			
+			<div id="rekom"></div>
 			
-			
-			<div class="col row l12 m12 s12" style="margin-left:64px; margin-right:64px; padding-top:10px;">
+			<div class="col row l12 m12 s12" style="background-color:rgba(255, 255, 255,0.3); 
+			margin-left:64px; margin-right:64px; padding-top:10px; padding-left:16px; padding-right:16px; ">
 				<div id="content"></div>
 			</div>
 			
@@ -157,7 +162,7 @@
 		
 		$queri="SELECT * from tb_user WHERE profesi=1";
 		$proses=mysqli_query($con,$queri);
-		
+		$jml=0;
 		if($kat==0){
 			$row=mysqli_num_rows($proses); //banyaknya data (baris table) di database
 			echo "
@@ -172,9 +177,13 @@
 				$quer="SELECT * from tb_penjahit_".$idp." WHERE kategori = ".$kat."";
 				$pros=mysqli_query($con,$quer);
 				$row=mysqli_num_rows($pros);
+				if($row>0){
+					$jml+=$row;
+				}
+				
 				echo "
 				<script>
-					var row=$row; //banyak data di database
+					var row=$jml; //banyak data di database
 				</script>
 				";
 			}
@@ -193,12 +202,12 @@
 	var maks;
 	var a=0;
 	var p=0;
-	if(row<=4){ //banyak data kurang dari sama dengan 5
+	if(row<=8){ //banyak data kurang dari sama dengan 5
 		maks=1; //jumlah halaman maks 1
 	}
 	else{
-		while(row>(a+4)){ //lebih dari 5 baris dan kelipatan 5
-			a=a+4; //bertambah kelipatan lima
+		while(row>(a+8)){ //lebih dari 5 baris dan kelipatan 5
+			a=a+8; //bertambah kelipatan lima
 			p++; //halaman akan bertamah 1
 			maks=p+1; //halaman maks sesuai dengan yang mendekati dengan kelipatan 5 ke-(p+1)
 		}
@@ -214,6 +223,9 @@
 	//}
 	//setInterval(loadingdata, 500);//1000 miliseconds
 	
+		$(document).ready(function(){
+				$("#rekom").load("cusfiltrekom.php?pg="+page);
+		});
 		/*$(document).ready(function(){
 				refresh();
 		});
@@ -228,21 +240,23 @@
 	function rightclick(){
 		page++;
 		vup=vup;
-		kpk=(page-1)*4;
-		if(page*4>=row){ //jika sudah berada di halaman terakhir
+		kpk=(page-1)*8;
+		if(page*8>=row){ //jika sudah berada di halaman terakhir
 			//agar tidak menuju ke halaman berikutnya
-			page=kpk/4; //supaya ditahan di halaman terakhir			
+			page=kpk/8; //supaya ditahan di halaman terakhir			
 		}
 		
-		if((page*4>row-4)&&(row%4<vup)){ //satu halaman sebelum halaman terakhir dan penanda menunjuk baris ke-x, x<banyak data di halaman terakhir
-			vup=row%4; //penanda akan menunjukkan baris terakhir pada halaman terakhir
+		if((page*8>row-8)&&(row%8<vup)){ //satu halaman sebelum halaman terakhir dan penanda menunjuk baris ke-x, x<banyak data di halaman terakhir
+			vup=row%8; //penanda akan menunjukkan baris terakhir pada halaman terakhir
 		}
 		document.getElementById("hal").innerHTML = page+1; //memunculkan nomor halaman ke html (di pojok kanan atas)
 		$(document).ready(function(){
 				$("#content").load("cusfiltdata.php?pg="+page);
 		});
 		 
-		
+		$(document).ready(function(){
+				$("#rekom").load("cusfiltrekom.php?pg="+page);
+		});
 	}
 	
 	function leftclick(){
@@ -252,6 +266,10 @@
 		document.getElementById("hal").innerHTML = page+1; //memunculkan nomor halaman ke html (di pojok kanan atas)
 		$(document).ready(function(){
 				$("#content").load("cusfiltdata.php?pg="+page);
+		});
+		
+		$(document).ready(function(){
+				$("#rekom").load("cusfiltrekom.php?pg="+page);
 		});
 	}
 	

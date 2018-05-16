@@ -83,18 +83,48 @@
 		include 'connect.php';
 		session_start();
 		$idu=$_COOKIE['id'];
+		
 		if($idu==NULL){
 			header('location:login.php');
 		}
 		
-		$idp = $_SESSION['idp'];
-		$alamat = $_SESSION['alamat'];
-		$kain = $_SESSION['kain'];
-		$ukuran = $_SESSION['ukuran'];
-		$kategori = $_SESSION['kategori'];
-		$jumlah = $_SESSION['jumlah'];
-		$desain = $_SESSION['desain'];
+		if(isset($_GET['id']) && isset($_GET['s'])) {        
+			$_SESSION['idp']=$_GET['id'];
+			$_SESSION['alamat']=$_POST['alamat'];
+			$_SESSION['kain']=$_POST['kain'];
+			$_SESSION['ukuran']=$_POST['ukuran'];
+			$_SESSION['kategori']=$_POST['kategori'];
+			$_SESSION['jumlah']=$_POST['jumlah'];
+			$_SESSION['desain']=$_POST['desain'];
+			
+			//echo "<script>Materialize.toast('".$total."', 6000)</script>";
+			header('location:orpenpr.php');
+		}
 		
+		else if (isset($_GET['kd']) && isset($_GET['id'])&& !isset($_GET['s'])){
+		$idp = $_GET['id'];
+		$kode = $_GET['kd'];
+		$myq="SELECT * FROM order_jahit_".$idp." WHERE kdbooking ='$kode' order by tglorder";
+		$myp=mysqli_query($con,$myq);
+		while ($his = mysqli_fetch_array ($myp)){
+			$alamat=$his['alamat'];
+			$kain=$his['kain'];
+			$desain=$his['desain'];
+			$kategori=$his['kategori'];
+			$ukuran=$his['ukuran'];
+			$jumlah=$his['jumlah'];
+			$progress=$his['progress'];
+			$kirim=$his['kirim'];
+			$date=$his['tglorder'];
+			$time=$his['timeorder'];
+			$bayar=$his['bayar'];
+			
+			$diff = date_diff((date_create($date)),date_create(date("Y-m-d")));
+			$days= $diff->format("%a"); //days different from today to the day you ordered
+		}
+		
+		$add_days = 1;
+		$due = date('d M Y',strtotime($date) + (24*3600*$add_days));
 		if($ukuran==1){
 			$size="S";
 		}
@@ -118,53 +148,13 @@
 		$que="SELECT * FROM tb_penjahit_".$idp." WHERE kategori='$kategori'";
 		$pro=mysqli_query($con,$que);
 		while ($dat = mysqli_fetch_array ($pro)){
-			$price=$dat['tarif'];
+				$price=$dat['tarif'];
 		}
-		
-		$qk="SELECT * FROM tb_kain WHERE idkain='$kain'";
-		$pk=mysqli_query($con,$qk);
-		while ($dat = mysqli_fetch_array ($pk)){
-				$hargakain=$dat['harga'];
-		}
-		
-		
-		if(($kategori==4 )||($kategori==9)||($kategori==10))
-		{
-			if(($ukuran==1)||($ukuran==2))
-			$meter=2;
-			else if(($ukuran==3)||($ukuran==4))
-			$meter=2;
-			else $meter=2.25;
-		}
-		else if(($kategori==14 ))
-		{
-			if(($ukuran==1)||($ukuran==2))
-			$meter=0.75;
-			else if(($ukuran==3)||($ukuran==4))
-			$meter=1;
-			else $meter=1.25;
-		}
-		else if(($kategori==1)||($kategori==5)||($kategori==6)||($kategori==11)||($kategori==13))
-		{
-			if(($ukuran==1)||($ukuran==2))
-			$meter=2.25;
-			else if(($ukuran==4)||($ukuran==3))
-			$meter=2.5;
-			else $meter=2.75;
-		}
-		else{
-			if(($ukuran==1)||($ukuran==2))
-			$meter=1.5;
-			else if(($ukuran==3)||($ukuran==4))
-			$meter=1.75;
-			else $meter=2;
-		}
-		
-		$total=$price*$jumlah + $jumlah*$hargakain*$meter;
-		$_SESSION['total']=$total;		
-		$quer="SELECT * FROM tb_user WHERE idu='$idp'";
-		$pros=mysqli_query($con,$quer);
-		while ($dat = mysqli_fetch_array ($pros)){
+		$total=$price*$jumlah;
+				
+			$quer="SELECT * FROM tb_user WHERE idu='$idp'";
+			$pros=mysqli_query($con,$quer);
+			while ($dat = mysqli_fetch_array ($pros)){
 				$pava=$dat['avatar'];
 				$pemail=$dat['email'];
 				$puser=$dat['username'];
@@ -174,69 +164,25 @@
 				$pcity=$dat['kabupaten'];
 				$pprov=$dat['provinsi'];
 				$ppos=$dat['kodepos'];
-		}
-			
-		$q="SELECT * FROM order_jahit_".$idp." WHERE kirim='1'";
-		$p=mysqli_query($con,$q);
-		$row=mysqli_num_rows($p); //banyaknya data (baris table) di database
-		$ppesan=0;
-		$rating=0;
-		while ($d = mysqli_fetch_array ($p)){
-			$jml=$d['jumlah'];
-			$r=$d['rating'];
-			$rating=$rating+$r;
-			$ppesan=$ppesan+$jml;
-		}
-			
-		if($row>0) {$rating=round(($rating/$row),2);} //rerate rating
-		else {$rating=0;} //rerate rating
-
-		
-		if(isset($_GET['id']) && isset($_GET['s'])) {
-			$q="SELECT * FROM order_jahit_".$idp."";
-			$p=mysqli_query($con,$q);
-			$ido=mysqli_num_rows($p);
-			$ido=$ido+1;
-			$kd = "J".$idp."-".$ido."";
-			
-			date_default_timezone_set("Asia/Jakarta");
-			$date=date("Y-m-d"); //get the current date for order
-			$time=date("H:i:s");
-			
-			$_SESSION['kode']=$kd;
-			
-			
-			
-			$que="INSERT INTO `order_jahit_".$idp."` (`kdbooking`, `idpelanggan`, `alamat`, `kategori`, `ukuran`, `harga`, `tglorder`, `timeorder`, `jumlah`, `kain`, `desain`, `bayar`, `progress`, `kirim`) 
-			VALUES ('$kd', '$idu', '$alamat', '$kategori', '$ukuran', '$total', '$date', '$time', '$jumlah', '$kain', '$desain',0,0,0);";
-			$pro=mysqli_query($con,$que);
-			if($pro) {
-				$query="SELECT * FROM tb_user WHERE idu='$idu'";
-				$proses=mysqli_query($con,$query);
-				while ($dat = mysqli_fetch_array ($proses)){
-					$email=$dat['email'];
-				}
-				
-				ini_set( 'display_errors', 1 );   
-				error_reporting( E_ALL );  
-				$from = "fabriquette@dtk15.tk";    
-				$to = "$email";    
-				$subject = "Fabriquette: [Pesanan $kd] Segera lakukan pembayaran untuk pesanan Anda";    
-				$message = "Pesanan Anda dengan kode $kd telah ditambahkan, segera lakukan pembayaran untuk pesanan Anda. \n\n Segera menuju ke history Anda untuk melihat cara pembayaran selengkapnya.\n\nKetahui cara pembayaran dan unggah bukti pemabayaran di sini: https://meetjahit.dtk15.tk/histodetail.php?kd=$kode&idp=$idp.\n\nFabriQuette Support"; 
-				$headers = "From:" . $from;    
-				mail($to,$subject,$message, $headers); 
-				//echo "Pesan dikirim ke alamat email $email";
-					
-				$quer="INSERT INTO `tb_history` (`iduser`, `idprofesi`, `kdbooking`) 
-				VALUES ('$idu', '$idp', '$kd');";
-				$pros=mysqli_query($con,$quer);
-				if($pros){
-					header('location:orpenvoi.php');
-				}
 			}
-				
 			
-		}
+			$q="SELECT * FROM order_jahit_".$idp." WHERE bayar='1'";
+			$p=mysqli_query($con,$q);
+			$row=mysqli_num_rows($p); //banyaknya data (baris table) di database
+			$ppesan=0;
+			$rating=0;
+			while ($d = mysqli_fetch_array ($p)){
+				$jml=$d['jumlah'];
+				$r=$d['rating'];
+				$date=$d['tglorder'];
+				
+				$rating=$rating+$r;
+				$ppesan=$ppesan+$jml;
+			}
+			
+			if($row>0) {$rating=round(($rating/$row),2);} //rerate rating
+			else {$rating=0;} //rerate rating
+			
 	?>
 	<!--Modal untuk menampilkan pilihan foto-->
 	  <div id="photo" class="modal">
@@ -279,7 +225,17 @@
 		
 			
 		<div class="col l12 m12 s12" style="background-color: rgba(104, 73, 50,0.7); margin-top:-20px; margin-left:80px; margin-right:80px; padding:20px; text-align:center;">
-		
+			
+			<div class="row col l12 m12 s12" style="color:white; text-align:left; padding-left:0px;">
+				<div class="col l1 m12 s12">
+					<a  onclick="goBack()" class="col l12 btn ts modal-trigger" style="background-color:transparent"><i class="material-icons">arrow_back</i></a>
+				</div>
+				<div class="col l10 m12 s12" style=" margin-left:80px; opacity:1; font-size: 20px; font-family: 'Raleway'; color:white; text-align:center;">Ayo Pesan sekarang!
+				</div>
+			</div>
+			
+			
+			
 			<div class="col row l12 m12 s12" style="padding-top:10px; margin-right:16px; color:white; font-size:16px; font-family:'Raleway';">
 			<?php	
 			echo"
@@ -312,30 +268,56 @@
 								<a style='color:black; font-size:15px;' href='penjahit.php?id=".$idp."'>Lihat profil lengkap>></a>
 						</div>
 					</div>
-			</div>
+			</div>";
+			
+			$myquery="SELECT * FROM tb_user WHERE idu='$idu'";
+			$myprocess=mysqli_query($con,$myquery);
+			while ($data = mysqli_fetch_array ($myprocess)){
+				$myalamat=$data['alamat'];
+				$mykec=$data['kecamatan'];
+				$mycity=$data['kabupaten'];
+				$myprov=$data['provinsi'];
+				$mykodepos=$data['kodepos'];
+			}
+			
+			echo"
 			<div class='col row l9 m12 s12' style='padding-left:16px; padding-right:16px; text-align:center;'>
-				<form id='form' class='col l12' action='orpenpr.php?id=$idp&s=1' method='post' style='background-color:rgba(216, 144, 52, 0.5); padding:16px;'>	
-					<div class='' style='font-size:20px;'>Pesanan anda kepada $pnama</div>
+				<form id='form' class='col l12' action='orpen.php?id=$idp&s=1' method='post' style='background-color:rgba(216, 144, 52, 0.5); padding:16px;'>	
 					<div class='row col l12' style=''>
 						<div class='input-field col l12' style='color: white; text-align: left;'>Alamat
-							<input placeholder='Alamat' label='alamat' value='".$alamat."' name='alamat' type='text' style='background:transparent;' required>
+							<input placeholder='Alamat' label='alamat' value='".$myalamat.", ".$mykec.", ".$mycity.", ".$myprov.", ".$mykodepos."' name='alamat' type='text' style='background:transparent;' required>
 						</div>
 						<div class='input-field col l6' style='background-color: transparent; color:white; text-align:left;'>Ukuran
 							<select class='browser-default' name='ukuran' style='color:black;'>
-								<option>".$size."</option>
+								<option value='".$ukuran."'>$size</option>
+								<option value='1'>S</option>
+								<option value='2'>M</option>
+								<option value='3'>L</option>
+								<option value='4'>XL</option>
+								<option value='5'>XXL</option>
+								<option value='6'>XXXL</option>
 							</select>
 						</div>
 						<div class='input-field col l6' style='background-color: transparent; color:white; text-align:left;'>Kategori
-							<select class='browser-default' name='kategori' style='color:black;'>
-								
-			";
-								$cek="SELECT * FROM tb_jenis WHERE id='$kategori'";
-								$prs=mysqli_query($con,$cek);
-								
-								while ($dat = mysqli_fetch_array ($prs)){
-									echo"<option value='".$idk."' style='color: black;'>".$dat['jenis']."</option>";
+							<select class='browser-default' name='kategori' style='color:black;'>";
 							
-								}
+							$myq="SELECT * FROM tb_jenis WHERE id='$kategori'";
+							$myp=mysqli_query($con,$myq);
+							while ($dat = mysqli_fetch_array ($myp)){
+								echo"<option value='".$kategori."'>".$dat['jenis']."</option>";
+							}
+							
+							$cek="SELECT * FROM tb_penjahit_".$idp." ORDER by kategori";
+							$prs=mysqli_query($con,$cek);
+							while ($mhs = mysqli_fetch_array ($prs)){
+								$tarif=$mhs['tarif'];
+								$idk=$mhs['kategori'];
+								$myq="SELECT * FROM tb_jenis WHERE id='$idk'";
+								$myp=mysqli_query($con,$myq);
+								while ($dat = mysqli_fetch_array ($myp)){
+									echo"<option value='".$idk."' style='color: black;'>".$dat['jenis']." (Rp ".$tarif.")</option>";
+								}	
+							}
 								
 			echo"
 							</select>
@@ -343,38 +325,41 @@
 						<div class='input-field col l6' style='background-color: transparent; color:white; text-align:left;'>Kain
 							<select class='browser-default' name='kain' style='color:black;'>
 			";
-								$cek="SELECT * FROM tb_kain WHERE idkain ='$kain'";
-								$prs=mysqli_query($con,$cek);
-								while ($mhs = mysqli_fetch_array ($prs)){
-									echo"<option value='".$mhs['idkain']."' style='color: black;'>".$mhs['namakain']."</option>";
-								}
+							$qkain="SELECT * FROM tb_kain WHERE idkain='$kain'";
+							$pkain=mysqli_query($con,$qkain);
+							while ($kai = mysqli_fetch_array ($pkain)){
+								echo"<option value='".$kain."'>".$kai['namakain']."</option>";
+							}
+							
+							$cek="SELECT * FROM tb_kain ORDER by namakain";
+							$prs=mysqli_query($con,$cek);
+							while ($mhs = mysqli_fetch_array ($prs)){
+								echo"<option value='".$mhs['idkain']."' style='color: black;'>".$mhs['namakain']."</option>";
+							}
 								
 			echo"
 							</select>
 						</div>
 						
 						<div class='input-field col l6' style='color: white; text-align: left;'>Jumlah
-							<input placeholder='Jumlah' value='".$jumlah."' name='jumlah' type='text' style='background:transparent;' readonly>
+							<input placeholder='Jumlah' value='".$jumlah."' name='jumlah' type='text' style='background:transparent;' required>
 						</div>
 						<div class='input-field col l12' style='color: white; text-align: left;'>Link Desain
-							<input placeholder='Link Desain' value='".$desain."' name='desain' type='text' style='background:transparent;' readonly>
-						</div>
-						<div class='col l12' style='color: white; background-color:rgba(0, 0, 0,0.5); text-align: center; padding-top:20px; padding-bottom:20px;'>
-						TOTAL HARGA
-							<input placeholder='' value='".$total."' name='desain' type='text' style='font-size:28px; font-family:Lora; text-align:center;' readonly>	
+							<input placeholder='Link Desain' value='".$desain."' name='desain' type='text' style='background:transparent;' required>
 						</div>
 							 
 					</div>
 							 
 					<div class='col l12 m12 s12' style='text-allign:right; padding-bottom:20px;'>
 						<div class='col l12' style=''>
-							<input class='waves-effect waves-light btn ts' style='border:0px white solid;' type='submit' size='6' value='Setuju'>
+							<input class='waves-effect waves-light btn ts' style='border:0px white solid;' type='submit' size='6' value='Lanjut'>
 						</div>
 					</div>
 						
 				</form>
 				</div>
 				";
+		}
 			?>
 			
 			</div>
@@ -400,7 +385,79 @@
 	function goBack() {
 		window.history.back();
 	}
-
+	
+	var vup=1;
+	var page=0;
+	var kpk=1;
+	var srt="id"; //penanda pengurutan berdasar nrp
+	
+	document.getElementById("hal").innerHTML = page+1; //menampilkan angka halaman pertama
+	
+	var maks;
+	var a=0;
+	var p=0;
+	if(row<=4){ //banyak data kurang dari sama dengan 5
+		maks=1; //jumlah halaman maks 1
+	}
+	else{
+		while(row>(a+4)){ //lebih dari 5 baris dan kelipatan 5
+			a=a+4; //bertambah kelipatan lima
+			p++; //halaman akan bertamah 1
+			maks=p+1; //halaman maks sesuai dengan yang mendekati dengan kelipatan 5 ke-(p+1)
+		}
+	}
+	
+	document.getElementById("maks").innerHTML = maks; //menunjukkan halaman terakhir
+	
+	//FUNGSI UNTUK MENAMPILKAN FORM SESUAI DENGAN TOMBOL YANG DIKLIK
+	//var loadingdata = function(){
+		$(document).ready(function(){
+				$("#content").load("cusdata.php?pg="+page);
+		});
+	//}
+	//setInterval(loadingdata, 500);//1000 miliseconds
+	
+		/*$(document).ready(function(){
+				refresh();
+		});
+		
+		function refresh(){
+			setTimeout(function(){
+				$("#content").load("cusdata.php?pg="+page);
+				refresh();
+			},1000);
+		}*/
+	
+	function rightclick(){
+		page++;
+		vup=vup;
+		kpk=(page-1)*4;
+		if(page*4>=row){ //jika sudah berada di halaman terakhir
+			//agar tidak menuju ke halaman berikutnya
+			page=kpk/4; //supaya ditahan di halaman terakhir			
+		}
+		
+		if((page*4>row-4)&&(row%4<vup)){ //satu halaman sebelum halaman terakhir dan penanda menunjuk baris ke-x, x<banyak data di halaman terakhir
+			vup=row%4; //penanda akan menunjukkan baris terakhir pada halaman terakhir
+		}
+		document.getElementById("hal").innerHTML = page+1; //memunculkan nomor halaman ke html (di pojok kanan atas)
+		$(document).ready(function(){
+				$("#content").load("cusdata.php?pg="+page);
+		});
+		 
+		
+	}
+	
+	function leftclick(){
+		page--;
+		
+		if(page<0) page=0; //jika sudah berada di halaman awal maka tidak akan berpindah ke halaman manapun
+		document.getElementById("hal").innerHTML = page+1; //memunculkan nomor halaman ke html (di pojok kanan atas)
+		$(document).ready(function(){
+				$("#content").load("cusdata.php?pg="+page);
+		});
+	}
+	
 	
 	</script>
 	

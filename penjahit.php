@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Amatic+SC" rel="stylesheet"> 
 	<link href="https://fonts.googleapis.com/css?family=Raleway+Dots" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet"> 
 </head>
 
 <body background="img/bg.jpg" style="background-size:cover; opacity:1">
@@ -82,9 +83,6 @@
 		include 'connect.php';
 		session_start();
 		$idu=$_COOKIE['id'];
-		if($idu==NULL){
-			header('location:index.php');
-		}
 		if(isset($_GET['e'])){ //mengedit data
 			$nama=$_POST['nama'];
 			$username=$_POST['username'];
@@ -143,14 +141,51 @@
 	<!--UI Web-->	
 
 			<div class="row col l12 m12 s12" style="background-color: #351e16; margin-right:80px; margin-left:80px;">
-				<div class="col l8 m12 s12" style="text-align:left; font-family: 'Raleway Dots', cursive; color:white; font-size:40px; padding:10px; padding-left:100px;">MEETJAHIT</div>
-				<a id="head" href="cus.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HOME</a>
-				<a id="head" href="history.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HISTORY</a>
-				<a id="head" href="profile.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">PROFILE</a>
+				<div class="col l8 m12 s12" style="text-align:left; font-family: 'Pacifico', cursive; color:white; font-size:36px; padding:10px; padding-left:100px;">FabriQuette</div>
+				<a id="head" href="tay.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HOME</a>
+				<a id="head" href="tayhis.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HISTORY</a>
+				<a id="head" href="penjahit.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">PROFILE</a>
 				<a id="head" href="index.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">X</a>
 			</div >
 		
+		<div class="col l12 m12 s12" style="background-color: rgba(104, 73, 50,0.7); margin-top:-20px; margin-left:80px; margin-right:80px; padding:20px; text-align:center;">
 		
+			<div class="col row l12 m12 s12" style="padding-top:10px; margin-right:16px; color:white; font-size:16px; font-family:'Raleway';">
+			<?php	
+			echo"
+			
+			<div class='col row l3 m12 s12' style='padding-left:16px; padding-right:16px; text-align:center;'>
+					<div class='col l12 m12 s12' style='background-color:rgba(0, 0, 0,0.6); padding:16px; '>
+							<img src='img/tailor/".$pava.".png' width='120' height='120' alt=''/>
+							<div>
+								<a style='color:#d89034; font-size:16px; font-family:Lora' href='penjahit.php?id=".$idp."'>@$puser</a>
+							</div>
+							<div style='padding-top:4px; font-size:18px; font-family:Raleway'>".$pnama."</div>
+							<div style='padding-top:2px; font-size:14px; font-family:Raleway'>Professional Tailor</div>
+							
+					</div>
+					<div class='col l12 m12 s12' style='background-color:rgba(0, 255, 255,0.6); text-align:left; color:black; padding:8px'>
+							<div class='col l6 m6 s6' style='font-size:14px; color:white; padding-top:0px;'>Jumlah order:</div>
+							<div class='col l6 m6 s6' style='font-size:14px; color:white;  padding-top:0px;'>Rating:</div>
+							<div class='col l6 m6 s6' style='font-size:16px; font-family:Amatic;'>".$ppesan."</div>
+							<div class='col l6 m6 s6' style='font-size:16px; font-family:Amatic;'>".$rating." / 5</div>
+					</div>
+					<div class='col l12 m12 s12' style='background-color:rgba(0, 0, 0,0.6); text-align:left; color:white; padding:16px;'>
+						<div style='font-size:13px; color:#d89034;'>Email:</div>
+						<div style='font-size:15px; '>".$pemail."</div>
+						<div style='font-size:13px; color:#d89034; padding-top:8px;'>Alamat:</div>
+						<div style='font-size:15px; '>".$palamat.", ".$pkec.", ".$pcity.", ".$pprov.", ".$ppos."</div>
+						
+					</div>
+					<div class='col l12 m12 s12' style='background-color:rgba(255, 255, 255,0.6); text-align:left; color:black; padding:8px'>
+							<div style='text-align:right'>
+								<a style='color:black; font-size:15px;' href='penjahit.php?id=".$idp."'>Lihat profil lengkap>></a>
+						</div>
+					</div>
+			</div>";
+			?>
+			</div>
+			</div>
 			
 		<div class="col l12 m12 s12" style="background-color: rgba(104, 73, 50,0.7); margin-top:-20px; margin-left:80px; margin-right:80px; padding:20px; text-align:center;">
 			<div class="col l12 m12 s12" style=" margin-left:160px; opacity:1; font-size: 24px; font-family: 'Raleway'; color:white; text-align:left;">PROFIL ANDA</div>

@@ -48,13 +48,10 @@
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="order.php">Order</a>
-            </li>
-            <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="about.php">About</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="stakeholder.php">Stakeholder</a>
+              <a class="nav-link text-uppercase text-expanded" href="help.php">Help</a>
             </li>
             <li class="nav-item active px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="login.php">Login</a>
@@ -106,8 +103,11 @@
 							$prof=$data['profesi'];
 							$idu=$data['idu'];
 							
+							if($prof==0){
+								header("location:adminhis.php");
+							}
 							if($prof==1){
-								header("location:cus.php#");
+								header("location:tay.php");
 							}	
 							if($prof==2){
 								header("location:homedesigner.php#");
@@ -116,7 +116,7 @@
 								header("location:homesupplier.php#");
 							}	
 							if($prof==4){
-								header("location:cus.php#");
+								header("location:cus.php");
 							}
 							else 
 							{

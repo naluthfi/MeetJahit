@@ -50,7 +50,7 @@
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="order.php">Order</a>
+              <a class="nav-link text-uppercase text-expanded" href="help.php">Help</a>
             </li>
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="about.php">About</a>
@@ -106,6 +106,7 @@
 						  `kdbooking` varchar(20) NOT NULL,
 						  `idpelanggan` int(11) DEFAULT NULL,
 						  `alamat` varchar(150) DEFAULT NULL,
+						  `kategori` smallint(6) NOT NULL,
 						  `ukuran` smallint(6) NOT NULL,
 						  `bayar` tinyint(1) DEFAULT NULL,
 						  `progress` tinyint(1) DEFAULT NULL,
@@ -113,6 +114,7 @@
 						  `harga` int(11) DEFAULT NULL,
 						  `rating` tinyint(5) DEFAULT NULL,
 						  `tglorder` date DEFAULT NULL,
+						  `timeorder` time DEFAULT NULL,
 						  `tglkirim` date DEFAULT NULL,
 						  `jumlah` smallint(6) DEFAULT NULL,
 						  `kain` smallint(6) DEFAULT NULL,
@@ -122,15 +124,17 @@
 						$proses2=mysqli_query($con,$create);
 						
 						if($proses2){
-							$tb2="CREATE TABLE tb_penjahit_".$idu." (
-							  `idp` int(11) NOT NULL,
-							  `kategori` tinyint(4),
-							  `tarif` int(11)
-							)";
+							$tb2="
+								CREATE TABLE tb_penjahit_".$idu." (
+									idp SMALLINT(11) NOT NULL AUTO_INCREMENT,
+									kategori TINYINT(4),
+									tarif INT(11),
+									PRIMARY KEY (idp)
+								); 							";
 							$proses3=mysqli_query($con,$tb2);
 							
 							if($proses3){
-								header("location:cus.php");
+								header("location:tay.php");
 							}
 						}
 					}
@@ -155,11 +159,14 @@
 						$proses2=mysqli_query($con,$create);
 						
 						if($proses2){
-							$tb2="CREATE TABLE tb_desainer_".$idu." (
-							  `idp` int(11) NOT NULL,
-							  `kategori` tinyint(4),
-							  `tarif` int(11)
-							)";
+							$tb2="
+								CREATE TABLE tb_desain_".$idu." (
+									idp SMALLINT(11) NOT NULL AUTO_INCREMENT,
+									kategori TINYINT(4),
+									tarif INT(11),
+									PRIMARY KEY (idp)
+								);  
+							";
 							$proses3=mysqli_query($con,$tb2);
 							
 							if($proses3){
@@ -173,7 +180,7 @@
 						  `kdbooking` varchar(20) NOT NULL,
 						  `idpelanggan` int(11),
 						  `alamat` varchar(150),
-						  `idk` varchar(30),
+						  `idk` varchar(10),
 						  `bayar` tinyint(1),
 						  `progress` tinyint(1),
 						  `kirim` tinyint(1),
@@ -182,15 +189,13 @@
 						  `tglorder` date,
 						  `tglkirim` date,
 						  `jumlah` smallint(6),
-						  `kain` smallint(6),
-						  `desain` varchar(100)
 						)";
 						
 						$proses2=mysqli_query($con,$create);
 						
 						if($proses2){
 							$tb2="CREATE TABLE tb_supplier_".$idu." (
-							  `kdkain` varchar(5) NOT NULL,
+							  `kdkain` varchar(10) NOT NULL,
 							  `kdwarna` varchar(6),
 							  `stok` int(5),
 							  `harga` int(11)
@@ -201,6 +206,10 @@
 								header("location:homesupplier.php#");
 							}
 						}
+					}
+					
+					else{
+						header("location:cus.php");
 					}
 					
 					setcookie('id',$idu);
@@ -276,8 +285,6 @@
               <div class="form-group">
                 <label for="prof">Select Your Account For</label>
                 <select name="prof" class="form-control" id="prof">
-                  <option value="2">Fashion Designer</option>
-                  <option value="3">Textile Supplier</option>
                   <option value="1">Tailor</option>
                   <option value="4">Customer</option>
                 </select>

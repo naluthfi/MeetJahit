@@ -82,9 +82,6 @@
 		include 'connect.php';
 		session_start();
 		$idu=$_COOKIE['id'];
-		if($idu==NULL){
-			header('location:index.php');
-		}
 		if(isset($_GET['e'])){ //mengedit data
 			$nama=$_POST['nama'];
 			$username=$_POST['username'];
@@ -98,14 +95,14 @@
 			
 			$queri="UPDATE tb_user set nama='$nama', username='$username', email='$email', alamat ='$alamat', kabupaten ='$kabupaten', provinsi ='$provinsi', kodepos ='$kodepos' WHERE idu='$idu'";
 			$proses=mysqli_query($con,$queri);
-			if($proses) header('location:profile.php');
+			if($proses) header('location:proftay.php');
 			//echo "<script>Materialize.toast('Data diperbaharui', 1000)</script>;";
 		}
 		else if(isset($_GET['ava'])){ //mengedit data
 			$ava=$_GET['ava'];
 			$quer="UPDATE tb_user SET avatar='$ava' WHERE idu='$idu'";
 			$pros=mysqli_query($con,$quer);
-			if($pros) header('location:profile.php');
+			if($pros) header('location:proftay.php');
 			//echo "<script>Materialize.toast('Data diperbaharui', 1000)</script>;";
 		}
 	?>
@@ -144,9 +141,9 @@
 
 			<div class="row col l12 m12 s12" style="background-color: #351e16; margin-right:80px; margin-left:80px;">
 				<div class="col l8 m12 s12" style="text-align:left; font-family: 'Raleway Dots', cursive; color:white; font-size:40px; padding:10px; padding-left:100px;">MEETJAHIT</div>
-				<a id="head" href="cus.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HOME</a>
-				<a id="head" href="history.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HISTORY</a>
-				<a id="head" href="profile.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">PROFILE</a>
+				<a id="head" href="tay.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HOME</a>
+				<a id="head" href="tayhis.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HISTORY</a>
+				<a id="head" href="penjahit.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">PROFILE</a>
 				<a id="head" href="index.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">X</a>
 			</div >
 		

@@ -98,14 +98,14 @@
 			
 			$queri="UPDATE tb_user set nama='$nama', username='$username', email='$email', alamat ='$alamat', kabupaten ='$kabupaten', provinsi ='$provinsi', kodepos ='$kodepos' WHERE idu='$idu'";
 			$proses=mysqli_query($con,$queri);
-			if($proses) header('location:profile.php');
+			if($proses) header('location:profadm.php');
 			//echo "<script>Materialize.toast('Data diperbaharui', 1000)</script>;";
 		}
 		else if(isset($_GET['ava'])){ //mengedit data
 			$ava=$_GET['ava'];
 			$quer="UPDATE tb_user SET avatar='$ava' WHERE idu='$idu'";
 			$pros=mysqli_query($con,$quer);
-			if($pros) header('location:profile.php');
+			if($pros) header('location:profadm.php');
 			//echo "<script>Materialize.toast('Data diperbaharui', 1000)</script>;";
 		}
 	?>
@@ -126,7 +126,7 @@
 						<img src='img/tailor/".$i.".png' width='100' height='100' alt=''/>
 					</div>
 					<div class='col l12'>  
-						<a style='margin-top:8px;' href='profile.php?ava=".$i."' class='waves-effect waves-light btn ts';'>Pilih</a>
+						<a style='margin-top:8px;' href='profadm.php?ava=".$i."' class='waves-effect waves-light btn ts';'>Pilih</a>
 					</div>
 				</div>
 			</div>
@@ -145,8 +145,8 @@
 			<div class="row col l12 m12 s12" style="background-color: #351e16; margin-right:80px; margin-left:80px;">
 				<div class="col l8 m12 s12" style="text-align:left; font-family: 'Raleway Dots', cursive; color:white; font-size:40px; padding:10px; padding-left:100px;">MEETJAHIT</div>
 				<a id="head" href="cus.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HOME</a>
-				<a id="head" href="history.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HISTORY</a>
-				<a id="head" href="profile.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">PROFILE</a>
+				<a id="head" href="adminhis.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HISTORY</a>
+				<a id="head" href="profadm.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">PROFILE</a>
 				<a id="head" href="index.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">X</a>
 			</div >
 		
@@ -163,7 +163,7 @@
 			while ($dat = mysqli_fetch_array ($procc)){
 				$ava=$dat['avatar'];
 				echo"
-				<form id='form' class='row col l12' action='profile.php?e=1' method='post' 
+				<form id='form' class='row col l12' action='profadm.php?e=1' method='post' 
 				style='background-color:rgba(216, 144, 52, 0.5); margin-left:160px; margin-right:160px; padding:40px;'>
 						<div style='padding-left:360px; padding-right:360px;'>
 							<div class='row col l12' style='text-align:center;  background-color:transparent; padding-top:16px; border:0px white solid;'>

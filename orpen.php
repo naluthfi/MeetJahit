@@ -83,6 +83,9 @@
 		include 'connect.php';
 		session_start();
 		$idu=$_COOKIE['id'];
+		if($idu==NULL){
+			header('location:login.php');
+		}
 		
 		if(isset($_GET['id'])&& !isset($_GET['s'])){ //mengedit data
 			$idp=$_GET['id'];
@@ -100,7 +103,7 @@
 				$ppos=$dat['kodepos'];
 			}
 			
-			$q="SELECT * FROM order_jahit_".$idp."";
+			$q="SELECT * FROM order_jahit_".$idp." WHERE kirim='1'";
 			$p=mysqli_query($con,$q);
 			$row=mysqli_num_rows($p); //banyaknya data (baris table) di database
 			$ppesan=0;
@@ -163,8 +166,9 @@
 	<!--UI Web-->	
 
 			<div class="row col l12 m12 s12" style="background-color: #351e16; margin-right:80px; margin-left:80px;">
-				<div class="col l9 m12 s12" style="text-align:left; font-family: 'Raleway Dots', cursive; color:white; font-size:40px; padding:10px; padding-left:100px;">MEETJAHIT</div>
+				<div class="col l8 m12 s12" style="text-align:left; font-family: 'Raleway Dots', cursive; color:white; font-size:40px; padding:10px; padding-left:100px;">MEETJAHIT</div>
 				<a id="head" href="cus.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HOME</a>
+				<a id="head" href="history.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">HISTORY</a>
 				<a id="head" href="profile.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">PROFILE</a>
 				<a id="head" href="index.php" class="col l1" style="padding:20px; margin-top:8px; text-align:center; font-size:16px;">X</a>
 			</div >
@@ -249,14 +253,15 @@
 							<select class='browser-default' name='kategori' style='color:black;'>
 								<option>Pilih Kategori</option>
 			";
-								$cek="SELECT * FROM tb_penjahit_".$idp."";
+								$cek="SELECT * FROM tb_penjahit_".$idp." ORDER by kategori";
 								$prs=mysqli_query($con,$cek);
 								while ($mhs = mysqli_fetch_array ($prs)){
+									$tarif=$mhs['tarif'];
 									$idk=$mhs['kategori'];
 									$myq="SELECT * FROM tb_jenis WHERE id='$idk'";
 									$myp=mysqli_query($con,$myq);
 									while ($dat = mysqli_fetch_array ($myp)){
-										echo"<option value='".$idk."' style='color: black;'>".$dat['jenis']."</option>";
+										echo"<option value='".$idk."' style='color: black;'>".$dat['jenis']." (Rp ".$tarif.")</option>";
 									}
 									
 								}
@@ -284,7 +289,6 @@
 						<div class='input-field col l12' style='color: white; text-align: left;'>Link Desain
 							<input placeholder='Link Desain' value='' name='desain' type='text' style='background:transparent;' required>
 						</div>
-							 
 					</div>
 							 
 					<div class='col l12 m12 s12' style='text-allign:right; padding-bottom:20px;'>
@@ -322,77 +326,6 @@
 		window.history.back();
 	}
 	
-	var vup=1;
-	var page=0;
-	var kpk=1;
-	var srt="id"; //penanda pengurutan berdasar nrp
-	
-	document.getElementById("hal").innerHTML = page+1; //menampilkan angka halaman pertama
-	
-	var maks;
-	var a=0;
-	var p=0;
-	if(row<=4){ //banyak data kurang dari sama dengan 5
-		maks=1; //jumlah halaman maks 1
-	}
-	else{
-		while(row>(a+4)){ //lebih dari 5 baris dan kelipatan 5
-			a=a+4; //bertambah kelipatan lima
-			p++; //halaman akan bertamah 1
-			maks=p+1; //halaman maks sesuai dengan yang mendekati dengan kelipatan 5 ke-(p+1)
-		}
-	}
-	
-	document.getElementById("maks").innerHTML = maks; //menunjukkan halaman terakhir
-	
-	//FUNGSI UNTUK MENAMPILKAN FORM SESUAI DENGAN TOMBOL YANG DIKLIK
-	//var loadingdata = function(){
-		$(document).ready(function(){
-				$("#content").load("cusdata.php?pg="+page);
-		});
-	//}
-	//setInterval(loadingdata, 500);//1000 miliseconds
-	
-		/*$(document).ready(function(){
-				refresh();
-		});
-		
-		function refresh(){
-			setTimeout(function(){
-				$("#content").load("cusdata.php?pg="+page);
-				refresh();
-			},1000);
-		}*/
-	
-	function rightclick(){
-		page++;
-		vup=vup;
-		kpk=(page-1)*4;
-		if(page*4>=row){ //jika sudah berada di halaman terakhir
-			//agar tidak menuju ke halaman berikutnya
-			page=kpk/4; //supaya ditahan di halaman terakhir			
-		}
-		
-		if((page*4>row-4)&&(row%4<vup)){ //satu halaman sebelum halaman terakhir dan penanda menunjuk baris ke-x, x<banyak data di halaman terakhir
-			vup=row%4; //penanda akan menunjukkan baris terakhir pada halaman terakhir
-		}
-		document.getElementById("hal").innerHTML = page+1; //memunculkan nomor halaman ke html (di pojok kanan atas)
-		$(document).ready(function(){
-				$("#content").load("cusdata.php?pg="+page);
-		});
-		 
-		
-	}
-	
-	function leftclick(){
-		page--;
-		
-		if(page<0) page=0; //jika sudah berada di halaman awal maka tidak akan berpindah ke halaman manapun
-		document.getElementById("hal").innerHTML = page+1; //memunculkan nomor halaman ke html (di pojok kanan atas)
-		$(document).ready(function(){
-				$("#content").load("cusdata.php?pg="+page);
-		});
-	}
 	
 	
 	</script>

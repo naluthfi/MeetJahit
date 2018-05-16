@@ -54,12 +54,53 @@
             </li>
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" href="login.php">Login</a>
-            </li>
+            </li>s
           </ul>
         </div>
       </div>
     </nav>
 
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex ml-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Fashion</span>
+                <span class="section-heading-lower">Designer</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/fashiondesigner.jpg" alt="">
+          <div class="product-item-description d-flex mr-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">Fashion designers create original clothing, accessories, and footwear. They sketch designs, select fabrics and patterns, and give instructions on how to make the products they design.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section">
+      <div class="container">
+        <div class="product-item">
+          <div class="product-item-title d-flex">
+            <div class="bg-faded p-5 d-flex mr-auto rounded">
+              <h2 class="section-heading mb-0">
+                <span class="section-heading-upper">Textile</span>
+                <span class="section-heading-lower">Supplier</span>
+              </h2>
+            </div>
+          </div>
+          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="img/supplier.jpg" alt="">
+          <div class="product-item-description d-flex ml-auto">
+            <div class="bg-faded p-5 rounded">
+              <p class="mb-0">They have been able to establish amicable relations with our clients by offering the products as per their variegated needs and demands within stipulated time frame. Their professionals are capable of designing the products that have perfect reflection of the current market trends and the tastes and preferences of the end-users. In addition, our proactive approach and devotion to deliver products as per the pre-determined schedules has helped us to achieve top position in the market. Further, to ensure optimum safety and higher client satisfaction, they are offering customized packaging facility.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section class="page-section">
       <div class="container">
